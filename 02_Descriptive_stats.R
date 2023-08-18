@@ -1,6 +1,7 @@
 
 ### Project 1: House Prices
 ### Description: Predict sales prices based on house characteristics
+### Code: 02_Descriptive_stats
 ### By: Samer Farfour
 
 
@@ -47,20 +48,18 @@ ncol(train_data2) # should be (81-18) = 63
 
 # Impute missing value for variable "Electrical"
 ggplot(train_data) + aes(Electrical) + geom_bar()
+train_data2 <- data.frame(train_data2)
+# Most used value is "SBrkr", so we will use that to impute the missing value
+find_mode <- function(x) {
+  ux <- unique(x)
+  tab <- tabulate(match(x, ux))
+  ux[which.max(tab)]
+}
 
+find_mode(train_data2$Electrical)
 
-
-
-
-
-
-
-
-
-
-
-
-
+train_data2[is.na(train_data2$Electrical),"Electrical"] = find_mode(train_data2$Electrical)
+train_data2[1380,]
 
 
 
