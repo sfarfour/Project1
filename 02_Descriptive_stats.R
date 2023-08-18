@@ -3,6 +3,8 @@
 ### Description: Predict sales prices based on house characteristics
 ### By: Samer Farfour
 
+
+#options(tibble.width = 10)
 options(scipen=999)
 
 library("tidyverse")
@@ -19,11 +21,36 @@ head(train_data)
 summary(train_data)
 glimpse(train_data)
 
-# Variable of interest
+### Variable of interest
 summary(train_data$SalePrice)
 boxplot(train_data$SalePrice)
 ggplot(train_data) + aes(x=SalePrice) + geom_histogram()
 # Variable distribution is skewed to the right
+
+
+
+### Pre-processing
+
+# Calculate total count of missing values per column
+total <- colSums(is.na(train_data))
+total <- total[order(-total)]
+missing_values_count <- data.frame(total)
+
+# To simplify this problem, we will remove all the variables with at least 2 missing values
+# For the variable "Electrical", which only has 1 missing value, we will impute with the mean
+variables_to_remove <- rownames(missing_values_count)[missing_values_count$total > 1]
+print(variables_to_remove) # 18 variables to remove
+
+train_data2 <- train_data[,-which(names(train_data) %in% variables_to_remove)]
+
+ncol(train_data2) # should be (81-18) = 63
+
+# Impute missing value for variable "Electrical"
+ggplot(train_data) + aes(Electrical) + geom_bar()
+
+
+
+
 
 
 
