@@ -32,7 +32,7 @@ ggplot(train_data) + aes(x=SalePrice) + geom_histogram()
 
 ### Pre-processing
 
-# Calculate total count of missing values per column
+## Calculate total count of missing values per variable
 total <- colSums(is.na(train_data))
 total <- total[order(-total)]
 missing_values_count <- data.frame(total)
@@ -46,7 +46,7 @@ train_data2 <- train_data[,-which(names(train_data) %in% variables_to_remove)]
 
 ncol(train_data2) # should be (81-18) = 63
 
-# Impute missing value for variable "Electrical"
+## Impute missing value for variable "Electrical"
 ggplot(train_data) + aes(Electrical) + geom_bar()
 train_data2 <- data.frame(train_data2)
 # Most used value is "SBrkr", so we will use that to impute the missing value
@@ -60,6 +60,9 @@ find_mode(train_data2$Electrical)
 
 train_data2[is.na(train_data2$Electrical),"Electrical"] = find_mode(train_data2$Electrical)
 train_data2[1380,]
+
+
+## Check for aberrant values
 
 
 
