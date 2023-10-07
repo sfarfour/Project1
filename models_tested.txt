@@ -6,3 +6,4 @@ SalePrice ~ OverallQual + GrLivArea + Neighborhood + KitchenQual + RoofMatl + Bs
 
 Backward Stepwise: (AIC=33717.9)
 SalePrice ~ MSZoning + LotArea + Street + LandContour + LotConfig + LandSlope + Neighborhood + Condition1 + Condition2 + BldgType + HouseStyle + OverallQual + OverallCond + YearBuilt + YearRemodAdd + RoofStyle + RoofMatl + ExterQual + Foundation + BsmtFinSF1 + BsmtFinSF2 + BsmtUnfSF + X1stFlrSF + X2ndFlrSF + FullBath + BedroomAbvGr + KitchenAbvGr + KitchenQual + TotRmsAbvGrd + Functional + Fireplaces + GarageCars + GarageArea + WoodDeckSF + ScreenPorch + PoolArea + MoSold + SaleType
+

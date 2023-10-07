@@ -56,7 +56,7 @@ for (i in discrete_variables){
 cor_anova
 
 
-# Criteria of decision for Pearson coeff ?
+# Criteria of decision for ANOVA ?
 n <- 1
 
 for (i in discrete_variables){
